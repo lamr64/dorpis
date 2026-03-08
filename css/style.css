@@ -259,6 +259,16 @@ opacity: 0.8;
 line-height: 1.8;
 }
 
+.contact select{
+background:#020617;
+border:1px solid #1e293b;
+padding:14px;
+margin-bottom:18px;
+border-radius:6px;
+color:white;
+width:100%;
+
+}
 /* ===== FOOTER ===== */
 
 footer {
