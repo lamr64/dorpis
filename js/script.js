@@ -136,3 +136,17 @@ alert("Ошибка отправки");
 });
 
 }
+
+// движение дорожной разметки
+
+const roadLine = document.querySelector(".road::before");
+
+let offset = 0;
+
+setInterval(()=>{
+
+offset -= 2;
+
+document.querySelector(".road").style.backgroundPositionX = offset + "px";
+
+},40);
