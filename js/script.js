@@ -150,3 +150,17 @@ offset -= 2;
 document.querySelector(".road").style.backgroundPositionX = offset + "px";
 
 },40);
+
+// движение дорожной разметки
+
+const road = document.querySelector(".road-build");
+
+let pos = 0;
+
+setInterval(() => {
+
+pos -= 2;
+
+road.style.backgroundPositionX = pos + "px";
+
+}, 40);
