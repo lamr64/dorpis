@@ -2,7 +2,7 @@
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-anchor.addEventListener("click", function(e) {
+anchor.addEventListener("click", function(e){
 
 e.preventDefault();
 
@@ -30,9 +30,11 @@ entry.target.classList.add("show");
 
 });
 
-const hiddenElements = document.querySelectorAll(".service-card, .stat, .stage, .projects img");
+const elements = document.querySelectorAll(
+".service-card, .stat, .stage, .projects img"
+);
 
-hiddenElements.forEach(el => {
+elements.forEach(el => {
 
 el.classList.add("hidden");
 
@@ -42,10 +44,60 @@ observer.observe(el);
 
 
 
+// ===== PARALLAX HERO =====
+
+window.addEventListener("scroll", () => {
+
+const hero = document.querySelector(".hero");
+
+if(hero){
+
+let offset = window.pageYOffset;
+
+hero.style.backgroundPositionY = offset * 0.4 + "px";
+
+}
+
+});
+
+
+
+// ===== LIGHTBOX ГАЛЕРЕЯ =====
+
+const images = document.querySelectorAll(".projects img");
+
+images.forEach(img => {
+
+img.addEventListener("click", () => {
+
+const overlay = document.createElement("div");
+
+overlay.classList.add("lightbox");
+
+const bigImg = document.createElement("img");
+
+bigImg.src = img.src;
+
+overlay.appendChild(bigImg);
+
+document.body.appendChild(overlay);
+
+overlay.addEventListener("click", () => {
+
+overlay.remove();
+
+});
+
+});
+
+});
+
+
+
 // ===== TELEGRAM ФОРМА =====
 
-const botToken = "ВСТАВЬ_СЮДА_BOT_TOKEN";
-const chatId = "ВСТАВЬ_СЮДА_CHAT_ID";
+const botToken = "ВСТАВЬ_BOT_TOKEN";
+const chatId = "ВСТАВЬ_CHAT_ID";
 
 const form = document.getElementById("contactForm");
 
@@ -69,7 +121,7 @@ fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&tex
 
 .then(() => {
 
-alert("Заявка отправлена!");
+alert("Заявка отправлена");
 
 form.reset();
 
@@ -84,23 +136,3 @@ alert("Ошибка отправки");
 });
 
 }
-
-
-
-// ===== ЭФФЕКТ КНОПОК =====
-
-document.querySelectorAll(".button-primary").forEach(btn => {
-
-btn.addEventListener("mouseenter", () => {
-
-btn.style.transform = "translateY(-3px)";
-
-});
-
-btn.addEventListener("mouseleave", () => {
-
-btn.style.transform = "translateY(0)";
-
-});
-
-});
