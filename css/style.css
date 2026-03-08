@@ -24,42 +24,50 @@ margin: auto;
 /* ===== HERO ===== */
 
 .hero{
+
 position:relative;
-background-image:url("../img/hero-road.jpg");
+
+background-image:url("../img/hero.jpg");
+
 background-size:cover;
+
 background-position:center;
-background-repeat:no-repeat;
 
-height:90vh;
-
-display:flex;
-align-items:center;
-justify-content:center;
+padding:160px 20px 180px 20px;
 
 text-align:center;
 
-margin-top:70px;
+color:white;
+
 }
 
 .hero-overlay{
+
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
+
+inset:0;
 
 background:linear-gradient(
-to right,
-rgba(0,0,0,0.75),
-rgba(0,0,0,0.4)
+to bottom,
+rgba(0,0,0,0.65),
+rgba(0,0,0,0.45),
+rgba(0,0,0,0.65)
 );
+
+z-index:1;
+
 }
 
 .hero-content{
+
 position:relative;
+
 z-index:2;
+
 max-width:900px;
-color:white;
+
+margin:auto;
+
 }
 
 .hero h1{
@@ -330,144 +338,3 @@ max-height:90%;
 border-radius:10px;
 }
 
-/* ===== АНИМАЦИЯ ДОРОГИ ===== */
-
-.road-animation{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:160px;
-overflow:hidden;
-z-index:1;
-}
-
-.road{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:120px;
-background:#2a2a2a;
-transform-origin:left;
-transform:scaleX(0);
-animation:buildRoad 2.5s ease forwards;
-}
-
-.road::before{
-content:"";
-position:absolute;
-top:50%;
-left:0;
-width:100%;
-height:6px;
-background:repeating-linear-gradient(
-to right,
-white 0px,
-white 40px,
-transparent 40px,
-transparent 80px
-);
-transform:translateY(-50%);
-}
-
-@keyframes buildRoad{
-
-0%{
-transform:scaleX(0);
-}
-
-100%{
-transform:scaleX(1);
-}
-
-}
-
-/* ===== HERO СЦЕНА ===== */
-
-.road-scene{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:160px;
-z-index:2;
-pointer-events:none;
-}
-
-/* дорога */
-
-.road-build{
-position:absolute;
-bottom:0;
-left:0;
-height:90px;
-width:100%;
-background:#2a2a2a;
-transform-origin:left;
-transform:scaleX(0);
-animation:buildRoad 3s ease forwards;
-}
-
-.road-build::after{
-content:"";
-position:absolute;
-top:42px;
-width:100%;
-height:6px;
-background:repeating-linear-gradient(
-to right,
-white 0px,
-white 40px,
-transparent 40px,
-transparent 80px
-);
-}
-
-@keyframes buildRoad{
-
-0%{ transform:scaleX(0); }
-100%{ transform:scaleX(1); }
-
-}
-
-
-/* ===== ЭТАПЫ ===== */
-
-.stage{
-position:absolute;
-bottom:80px;
-text-align:center;
-font-size:28px;
-opacity:0;
-transform:translateY(20px);
-}
-
-.stage p{
-font-size:12px;
-margin-top:6px;
-opacity:0.8;
-}
-
-/* позиции */
-
-.stage1{ left:10%; animation:showStage 0.8s forwards 1s; }
-.stage2{ left:35%; animation:showStage 0.8s forwards 2s; }
-.stage3{ left:60%; animation:showStage 0.8s forwards 3s; }
-.stage4{ left:85%; animation:showStage 0.8s forwards 4s; }
-
-/* появление */
-
-@keyframes showStage{
-
-0%{
-opacity:0;
-transform:translateY(20px);
-}
-
-100%{
-opacity:1;
-transform:translateY(0);
-}
-
-}
