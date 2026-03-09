@@ -163,21 +163,6 @@ alert("Ошибка отправки");
 
 }
 
-const toast = document.getElementById("successMessage");
-
-toast.classList.add("show");
-
-setTimeout(() => {
-toast.classList.remove("show");
-}, 4000);
-  
-  form.reset();
-  
-} catch (error) {
-
-alert("Ошибка отправки");
-
-}
 
 setTimeout(()=>{
 
