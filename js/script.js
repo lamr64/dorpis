@@ -100,7 +100,7 @@ this.value = formatted;
 // ===== TELEGRAM ФОРМА =====
 
 const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
-const chatId = "699636050";
+const chatId = "8543757769";
 
 const form = document.getElementById("contactForm");
 
