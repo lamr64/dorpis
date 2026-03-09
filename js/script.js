@@ -237,26 +237,54 @@ if(endX - startX > 50) prevSlide();
 });
 
 
-/* fullscreen */
+/* ===== FULLSCREEN ===== */
 
-images.forEach(img=>{
+images.forEach((img,i)=>{
 
 img.addEventListener("click",()=>{
+
+let current = i;
 
 const viewer = document.createElement("div");
 viewer.className="gallery-view";
 
 const bigImg = document.createElement("img");
-bigImg.src = img.src;
+bigImg.src = images[current].src;
 
 const close = document.createElement("div");
 close.className="gallery-close";
 close.innerHTML="✕";
 
+const next = document.createElement("div");
+next.className="gallery-next";
+next.innerHTML="❯";
+
+const prev = document.createElement("div");
+prev.className="gallery-prev";
+prev.innerHTML="❮";
+
 viewer.appendChild(bigImg);
 viewer.appendChild(close);
+viewer.appendChild(next);
+viewer.appendChild(prev);
 
 document.body.appendChild(viewer);
+
+function show(){
+bigImg.src = images[current].src;
+}
+
+next.onclick=()=>{
+current++;
+if(current>=images.length) current=0;
+show();
+};
+
+prev.onclick=()=>{
+current--;
+if(current<0) current=images.length-1;
+show();
+};
 
 close.onclick=()=>{
 viewer.remove();
@@ -265,8 +293,6 @@ viewer.remove();
 viewer.onclick=e=>{
 if(e.target===viewer) viewer.remove();
 };
-
-});
 
 });
 
