@@ -104,7 +104,7 @@ this.value = result;
 const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
 const chatId = "381660343";
 
-const form = document.getElementById("contactForm");
+const form = document.querySelector("#contactForm");
 
 if (form) {
 
@@ -156,14 +156,16 @@ if(!response.ok){
 throw new Error("Telegram error");
 }
 
-const toast = document.getElementById("success-toast");
+const toast = document.getElementById("successMessage");
 
 toast.classList.add("show");
 
 setTimeout(() => {
 toast.classList.remove("show");
 }, 4000);
-
+  
+  form.reset();
+  
 } catch (error) {
 
 alert("Ошибка отправки");
@@ -214,7 +216,7 @@ slider.querySelector(".prev").onclick = prevSlide;
 
 // ===== АВТОПРОКРУТКА =====
 
-let auto = setInterval(nextSlide,4000);
+let auto = setInterval(nextSlide,5000);
 
 slider.addEventListener("mouseenter",()=>{
 clearInterval(auto);
