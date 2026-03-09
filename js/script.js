@@ -31,7 +31,7 @@ entry.target.classList.add("show");
 });
 
 const elements = document.querySelectorAll(
-".service-card, .stat, .stage, .projects img"
+".service-card, .stat, .stage, .projects-grid img"
 );
 
 elements.forEach(el => {
