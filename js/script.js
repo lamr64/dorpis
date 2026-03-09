@@ -1,7 +1,7 @@
 // ===== Chat bot ========
 
-const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
-const chatId = "CHAT_ID";
+// const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
+// const chatId = "CHAT_ID";
 
 // ===== ПЛАВНЫЙ СКРОЛЛ =====
 
