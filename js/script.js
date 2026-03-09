@@ -152,7 +152,9 @@ text: text
 
 });
 
-if(!response.ok){
+const data = await response.json();
+
+if(!data.ok){
 throw new Error("Telegram error");
 }
 
