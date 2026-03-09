@@ -174,3 +174,32 @@ form.reset();
 
 });
 
+document.querySelectorAll(".slider").forEach(slider => {
+
+const slides = slider.querySelector(".slides");
+
+const images = slides.querySelectorAll("img");
+
+let index = 0;
+
+slider.querySelector(".next").onclick = () => {
+
+index++;
+
+if(index >= images.length) index = 0;
+
+slides.style.transform = `translateX(-${index*100}%)`;
+
+};
+
+slider.querySelector(".prev").onclick = () => {
+
+index--;
+
+if(index < 0) index = images.length - 1;
+
+slides.style.transform = `translateX(-${index*100}%)`;
+
+};
+
+});
