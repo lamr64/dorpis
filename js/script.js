@@ -70,23 +70,25 @@ if (phoneInput) {
 
 phoneInput.addEventListener("input", function () {
 
-let numbers = this.value.replace(/\D/g, "");
+let numbers = this.value.replace(/\D/g,'');
 
-if(numbers.startsWith("7")) numbers = numbers.substring(1);
-if(numbers.startsWith("8")) numbers = numbers.substring(1);
+if(numbers.startsWith('7')) numbers = numbers.substring(1);
+if(numbers.startsWith('8')) numbers = numbers.substring(1);
+
+numbers = numbers.substring(0,10);
 
 let result = "+7";
 
 if(numbers.length > 0)
 result += " (" + numbers.substring(0,3);
 
-if(numbers.length >= 4)
+if(numbers.length >= 3)
 result += ") " + numbers.substring(3,6);
 
-if(numbers.length >= 7)
+if(numbers.length >= 6)
 result += "-" + numbers.substring(6,8);
 
-if(numbers.length >= 9)
+if(numbers.length >= 8)
 result += "-" + numbers.substring(8,10);
 
 this.value = result;
@@ -126,20 +128,33 @@ const text =
 "📞 Телефон: " + phone + "\n" +
 "🏙 Город: " + city + "\n" +
 "🛠 Вид работ: " + service + "\n" +
-"💬 Комментарий: " + message;
-
+"💬 Комментарий: " + (message || "—");
+  
 try {
 
-await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+
 method: "POST",
+
 headers: {
+
 "Content-Type": "application/json"
+
 },
+
 body: JSON.stringify({
+
 chat_id: chatId,
+
 text: text
+
 })
+
 });
+
+if(!response.ok){
+throw new Error("Telegram error");
+}
 
 alert("Заявка отправлена");
 
@@ -151,9 +166,13 @@ alert("Ошибка отправки");
 
 }
 
+setTimeout(()=>{
+
 button.disabled = false;
 button.innerText = "Отправить заявку";
 
+},2000);
+  
 });
 
 }
