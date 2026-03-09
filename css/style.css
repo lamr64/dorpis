@@ -385,7 +385,7 @@ border-radius:10px;
 
 /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
 
-@media (max-width:768px){
+@media (max-width:600px){
 /* ===== CONTACT MOBILE FIX ===== */
 
 .contact-wrapper{
@@ -454,6 +454,7 @@ grid-template-columns:1fr;
 .projects-grid{
 max-width:1200px;
 margin:auto;
+grid-template-columns:1fr;
 }
 
 /* этапы */
@@ -553,7 +554,6 @@ aspect-ratio:4/3;
 overflow:hidden;
 border-radius:10px;
 }
-
 
 .slides{
 display:flex;
