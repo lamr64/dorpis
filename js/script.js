@@ -183,15 +183,6 @@ let index = 0;
 
 function showSlide(i){
 slides.style.transform = `translateX(-${i*100}%)`;
-document.querySelectorAll(".slider").forEach(slider=>{
-
-const slides = slider.querySelector(".slides");
-const images = slides.querySelectorAll("img");
-
-let index = 0;
-
-function showSlide(i){
-slides.style.transform = `translateX(-${i*100}%)`;
 }
 
 function nextSlide(){
@@ -210,7 +201,7 @@ slider.querySelector(".next").onclick = nextSlide;
 slider.querySelector(".prev").onclick = prevSlide;
 
 
-/* ===== АВТОСКРОЛЛ ===== */
+/* автопрокрутка */
 
 let auto = setInterval(nextSlide,4000);
 
@@ -223,7 +214,7 @@ auto = setInterval(nextSlide,4000);
 });
 
 
-/* ===== SWIPE ===== */
+/* swipe */
 
 let startX = 0;
 
@@ -241,9 +232,9 @@ if(endX - startX > 50) prevSlide();
 });
 
 
-/* ===== FULLSCREEN ===== */
+/* fullscreen */
 
-images.forEach((img,i)=>{
+images.forEach(img=>{
 
 img.addEventListener("click",()=>{
 
