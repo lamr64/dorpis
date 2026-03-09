@@ -191,11 +191,13 @@ background: #243447;
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:30px;
-align-items:start;
+margin-top:40px;
 }
 
 .project-card{
-width:100%;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
 .projects img {
@@ -209,7 +211,6 @@ transform: scale(1.03);
 }
 .project-info{
 text-align:center;
-padding:15px 10px;
 }
 
 .project-info h3{
