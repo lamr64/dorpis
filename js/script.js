@@ -66,30 +66,30 @@ hero.style.backgroundPositionY = offset * 0.4 + "px";
 
 const phoneInput = document.getElementById("phone");
 
-if(phoneInput){
+if (phoneInput) {
 
-phoneInput.addEventListener("input", function(){
+phoneInput.addEventListener("input", function () {
 
-let numbers = this.value.replace(/\D/g,'');
+let numbers = this.value.replace(/\D/g, "");
 
-if(numbers.startsWith('8')) numbers = numbers.substring(1);
-if(numbers.startsWith('7')) numbers = numbers.substring(1);
+if(numbers.startsWith("7")) numbers = numbers.substring(1);
+if(numbers.startsWith("8")) numbers = numbers.substring(1);
 
-let formatted = "+7 ";
+let result = "+7";
 
 if(numbers.length > 0)
-formatted += "(" + numbers.substring(0,3);
+result += " (" + numbers.substring(0,3);
 
-if(numbers.length >= 3)
-formatted += ") " + numbers.substring(3,6);
+if(numbers.length >= 4)
+result += ") " + numbers.substring(3,6);
 
-if(numbers.length >= 6)
-formatted += "-" + numbers.substring(6,8);
+if(numbers.length >= 7)
+result += "-" + numbers.substring(6,8);
 
-if(numbers.length >= 8)
-formatted += "-" + numbers.substring(8,10);
+if(numbers.length >= 9)
+result += "-" + numbers.substring(8,10);
 
-this.value = formatted;
+this.value = result;
 
 });
 
@@ -100,48 +100,62 @@ this.value = formatted;
 // ===== TELEGRAM ФОРМА =====
 
 const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
-const chatId = "8543757769";
+const chatId = "381660343";
 
 const form = document.getElementById("contactForm");
 
 if (form) {
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const city = document.getElementById("city").value;
-    const service = document.getElementById("service").value;
-    const message = document.getElementById("message").value;
+form.addEventListener("submit", async function (e) {
 
-    const text = `
-Новая заявка с сайта DorPIS
+e.preventDefault();
 
-Имя: ${name}
-Телефон: ${phone}
-Город: ${city}
-Вид работ: ${service}
-Комментарий: ${message}
-`;
+const button = form.querySelector("button");
+button.disabled = true;
+button.innerText = "Отправка...";
 
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: text
-      })
-    })
-    .then(() => {
-      alert("Заявка отправлена");
-      form.reset();
-    })
-    .catch(() => {
-      alert("Ошибка отправки");
-    });
-  });
+const name = document.getElementById("name").value;
+const phone = document.getElementById("phone").value;
+const city = document.getElementById("city").value;
+const service = document.getElementById("service").value;
+const message = document.getElementById("message").value;
+
+const text =
+"📩 Новая заявка с сайта DorPIS\n\n" +
+"👤 Имя: " + name + "\n" +
+"📞 Телефон: " + phone + "\n" +
+"🏙 Город: " + city + "\n" +
+"🛠 Вид работ: " + service + "\n" +
+"💬 Комментарий: " + message;
+
+try {
+
+await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+chat_id: chatId,
+text: text
+})
+});
+
+alert("Заявка отправлена");
+
+form.reset();
+
+} catch (error) {
+
+alert("Ошибка отправки");
+
+}
+
+button.disabled = false;
+button.innerText = "Отправить заявку";
+
+});
+
 }
 
 
