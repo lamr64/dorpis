@@ -19,6 +19,8 @@ line-height: 1.6;
 width: 90%;
 max-width: 1200px;
 margin: auto;
+padding-left:20px;
+padding-right:20px;
 }
 
 /* ===== HERO ===== */
@@ -383,7 +385,10 @@ border-radius:10px;
     gap:40px;
 }
 
-.contact-form,
+.contact-form input,
+.contact-form textarea,
+.contact-form select{
+    width:100%;
 .contact-info{
     width:100%;
 }
