@@ -67,35 +67,7 @@ hero.style.backgroundPositionY = offset * 0.4 + "px";
 
 
 
-// ===== LIGHTBOX ГАЛЕРЕЯ =====
 
-const images = document.querySelectorAll(".slides img");
-
-images.forEach(img => {
-
-img.addEventListener("click", () => {
-
-const overlay = document.createElement("div");
-
-overlay.classList.add("lightbox");
-
-const bigImg = document.createElement("img");
-
-bigImg.src = img.src;
-
-overlay.appendChild(bigImg);
-
-document.body.appendChild(overlay);
-
-overlay.addEventListener("click", () => {
-
-overlay.remove();
-
-});
-
-});
-
-});
 
 // маска телефона
 
