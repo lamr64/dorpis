@@ -64,7 +64,7 @@ hero.style.backgroundPositionY = offset * 0.4 + "px";
 
 // ===== LIGHTBOX ГАЛЕРЕЯ =====
 
-const images = document.querySelectorAll(".projects img");
+const images = document.querySelectorAll(".slides img");
 
 images.forEach(img => {
 
