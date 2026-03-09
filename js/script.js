@@ -156,7 +156,7 @@ const text = `
 Комментарий: ${message}
 `;
 
-fetch(`https://api.telegram.org/bot${botToken}/sendMessage`,{
+// fetch(`https://api.telegram.org/bot${botToken}/sendMessage`,{
 
 method:"POST",
 
