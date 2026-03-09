@@ -177,29 +177,50 @@ form.reset();
 document.querySelectorAll(".slider").forEach(slider => {
 
 const slides = slider.querySelector(".slides");
-
 const images = slides.querySelectorAll("img");
 
 let index = 0;
 
+function showSlide(i){
+slides.style.transform = `translateX(-${i*100}%)`;
+}
+
 slider.querySelector(".next").onclick = () => {
-
 index++;
-
 if(index >= images.length) index = 0;
-
-slides.style.transform = `translateX(-${index*100}%)`;
-
+showSlide(index);
 };
 
 slider.querySelector(".prev").onclick = () => {
-
 index--;
-
 if(index < 0) index = images.length - 1;
-
-slides.style.transform = `translateX(-${index*100}%)`;
-
+showSlide(index);
 };
+
+/* ===== SWIPE ===== */
+
+let startX = 0;
+
+slides.addEventListener("touchstart", e=>{
+startX = e.touches[0].clientX;
+});
+
+slides.addEventListener("touchend", e=>{
+
+let endX = e.changedTouches[0].clientX;
+
+if(startX - endX > 50){
+index++;
+if(index >= images.length) index = 0;
+}
+
+if(endX - startX > 50){
+index--;
+if(index < 0) index = images.length - 1;
+}
+
+showSlide(index);
+
+});
 
 });
