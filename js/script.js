@@ -4,11 +4,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 anchor.addEventListener("click", function(e){
 
-e.preventDefault();
+const target = document.querySelector(this.getAttribute("href"));
 
-document.querySelector(this.getAttribute("href")).scrollIntoView({
+if(target){
+e.preventDefault();
+target.scrollIntoView({
 behavior: "smooth"
 });
+}
 
 });
 
@@ -112,7 +115,7 @@ form.addEventListener("submit", async function (e) {
 
 e.preventDefault();
 
-const button = form.querySelector("button");
+const button = form.querySelector('button[type="submit"]');
 button.disabled = true;
 button.innerText = "Отправка...";
 
@@ -149,11 +152,13 @@ throw new Error("Request failed");
 
 const toast = document.getElementById("successMessage");
 
+if(toast){
 toast.classList.add("show");
 
 setTimeout(()=>{
 toast.classList.remove("show");
 },4000);
+}
 
 form.reset();
 
