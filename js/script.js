@@ -156,9 +156,13 @@ if(!response.ok){
 throw new Error("Telegram error");
 }
 
-alert("Заявка отправлена");
+const toast = document.getElementById("success-toast");
 
-form.reset();
+toast.classList.add("show");
+
+setTimeout(() => {
+toast.classList.remove("show");
+}, 4000);
 
 } catch (error) {
 
