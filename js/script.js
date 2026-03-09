@@ -284,3 +284,15 @@ if(e.target===viewer) viewer.remove();
 });
 
 });
+
+function showSuccess(){
+
+const msg = document.getElementById("successMessage");
+
+msg.classList.add("show");
+
+setTimeout(()=>{
+msg.classList.remove("show");
+},4000);
+
+}
