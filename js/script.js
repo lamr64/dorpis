@@ -99,21 +99,22 @@ this.value = formatted;
 
 // ===== TELEGRAM ФОРМА =====
 
+const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
+const chatId = "699636050";
+
 const form = document.getElementById("contactForm");
 
-if(form){
+if (form) {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-form.addEventListener("submit", function(e){
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const city = document.getElementById("city").value;
+    const service = document.getElementById("service").value;
+    const message = document.getElementById("message").value;
 
-e.preventDefault();
-
-const name = document.getElementById("name").value;
-const phone = document.getElementById("phone").value;
-const city = document.getElementById("city").value;
-const service = document.getElementById("service").value;
-const message = document.getElementById("message").value;
-
-const text = `
+    const text = `
 Новая заявка с сайта DorPIS
 
 Имя: ${name}
@@ -123,14 +124,25 @@ const text = `
 Комментарий: ${message}
 `;
 
-alert("Заявка отправлена");
-
-form.reset();
-
-});
-
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: text
+      })
+    })
+    .then(() => {
+      alert("Заявка отправлена");
+      form.reset();
+    })
+    .catch(() => {
+      alert("Ошибка отправки");
+    });
+  });
 }
-
 
 
 // ===== СЛАЙДЕРЫ =====
