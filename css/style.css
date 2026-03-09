@@ -720,3 +720,26 @@ resize:vertical;
 outline:none;
 border-color:#3b82f6;
 }
+
+.success-toast{
+position: fixed;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%) translateY(20px);
+background: #16a34a;
+color: white;
+padding: 16px 28px;
+border-radius: 8px;
+font-size: 15px;
+font-weight: 500;
+box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+opacity: 0;
+pointer-events: none;
+transition: all 0.4s ease;
+z-index: 9999;
+}
+
+.success-toast.show{
+opacity: 1;
+transform: translateX(-50%) translateY(0);
+}
