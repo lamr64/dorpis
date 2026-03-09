@@ -1,8 +1,3 @@
-// ===== Chat bot ========
-
-// const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
-// const chatId = "CHAT_ID";
-
 // ===== ПЛАВНЫЙ СКРОЛЛ =====
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -21,7 +16,7 @@ behavior: "smooth"
 
 
 
-// ===== АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ =====
+// ===== АНИМАЦИЯ ПОЯВЛЕНИЯ =====
 
 const observer = new IntersectionObserver(entries => {
 
@@ -36,7 +31,7 @@ entry.target.classList.add("show");
 });
 
 const elements = document.querySelectorAll(
-".service-card, .stat, .stage, .projects-grid img"
+".service-card, .stat, .stage, .project-card"
 );
 
 elements.forEach(el => {
@@ -67,23 +62,18 @@ hero.style.backgroundPositionY = offset * 0.4 + "px";
 
 
 
-
-
-// маска телефона
+// ===== МАСКА ТЕЛЕФОНА =====
 
 const phoneInput = document.getElementById("phone");
+
+if(phoneInput){
 
 phoneInput.addEventListener("input", function(){
 
 let numbers = this.value.replace(/\D/g,'');
 
-if(numbers.startsWith('8')){
-numbers = numbers.substring(1);
-}
-
-if(numbers.startsWith('7')){
-numbers = numbers.substring(1);
-}
+if(numbers.startsWith('8')) numbers = numbers.substring(1);
+if(numbers.startsWith('7')) numbers = numbers.substring(1);
 
 let formatted = "+7 ";
 
@@ -103,10 +93,15 @@ this.value = formatted;
 
 });
 
+}
+
+
 
 // ===== TELEGRAM ФОРМА =====
 
 const form = document.getElementById("contactForm");
+
+if(form){
 
 form.addEventListener("submit", function(e){
 
@@ -128,28 +123,17 @@ const text = `
 Комментарий: ${message}
 `;
 
-// fetch(`https://api.telegram.org/bot${botToken}/sendMessage`,{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body: JSON.stringify({
-chat_id: chatId,
-text: text
-})
-
-}).then(()=>{
-
 alert("Заявка отправлена");
 
 form.reset();
 
 });
 
-});
+}
+
+
+
+// ===== СЛАЙДЕРЫ =====
 
 document.querySelectorAll(".slider").forEach(slider => {
 
@@ -178,7 +162,8 @@ slider.querySelector(".next").onclick = nextSlide;
 slider.querySelector(".prev").onclick = prevSlide;
 
 
-/* автопрокрутка */
+
+// ===== АВТОПРОКРУТКА =====
 
 let auto = setInterval(nextSlide,4000);
 
@@ -191,7 +176,8 @@ auto = setInterval(nextSlide,4000);
 });
 
 
-/* swipe */
+
+// ===== СВАЙП =====
 
 let startX = 0;
 
@@ -209,7 +195,8 @@ if(endX - startX > 50) prevSlide();
 });
 
 
-/* ===== FULLSCREEN ===== */
+
+// ===== FULLSCREEN =====
 
 images.forEach((img,i)=>{
 
@@ -265,6 +252,8 @@ viewer.remove();
 viewer.onclick=e=>{
 if(e.target===viewer) viewer.remove();
 };
+
+});
 
 });
 
