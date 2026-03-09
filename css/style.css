@@ -298,7 +298,7 @@ font-size: 14px;
 display:flex;
 flex-direction:column;
 gap:40px;
-align-items:flex-start;
+align-items:stretch;
 }
 
 .contact-form{
@@ -333,16 +333,7 @@ text-align: center;
 }
 
 }
-.hidden{
-opacity:0;
-transform: translateY(40px);
-transition: all 0.8s ease;
-}
 
-.show{
-opacity:1;
-transform: translateY(0);
-}
 /* анимация появления */
 
 .hidden{
@@ -384,10 +375,9 @@ border-radius:10px;
 /* ===== CONTACT MOBILE FIX ===== */
 
 .contact-wrapper{
-    grid-template-columns:1fr;
+    flex-direction:column;
     gap:40px;
 }
-
 .contact-form input,
 .contact-form textarea,
 .contact-form select{
