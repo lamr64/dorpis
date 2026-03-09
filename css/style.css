@@ -296,9 +296,9 @@ font-size: 14px;
 
 .contact-wrapper{
 display:flex;
+flex-direction:column;
 gap:40px;
 align-items:flex-start;
-flex-wrap:wrap;
 }
 
 .contact-form{
@@ -307,8 +307,11 @@ max-width:600px;
 }
 
 .contact-info{
-flex:1 1 300px;
-max-width:400px;
+background:#0f172a;
+padding:35px;
+border-radius:10px;
+width:100%;
+max-width:600px;
 }
 
 /* ===== АДАПТИВ ===== */
@@ -389,6 +392,8 @@ border-radius:10px;
 .contact-form textarea,
 .contact-form select{
     width:100%;
+}
+
 .contact-info{
     width:100%;
 }
@@ -452,20 +457,14 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
-/* контактная секция */
-
-.contact-wrapper{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-}
-
 /* карточка формы */
 
 .contact-form{
 background:#0f172a;
 padding:35px;
 border-radius:10px;
+width:100%;
+max-width:600px;
 }
 
 /* форма */
