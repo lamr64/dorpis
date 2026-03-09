@@ -393,9 +393,22 @@ border-radius:10px;
     gap:40px;
 }
 .contact-form input,
-.contact-form textarea,
-.contact-form select{
-    width:100%;
+.contact-form select,
+.contact-form textarea{
+
+width:100%;
+padding:14px;
+margin-bottom:14px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:16px;
+box-sizing:border-box;
+
+}
+
+.contact-form textarea{
+min-height:120px;
+resize:vertical;
 }
 
 .contact-info{
@@ -465,12 +478,23 @@ grid-template-columns:1fr;
 
 /* карточка формы */
 
-.contact-form{
-background:#0f172a;
-padding:35px;
-border-radius:10px;
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+
 width:100%;
-max-width:600px;
+padding:14px;
+margin-bottom:14px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:16px;
+box-sizing:border-box;
+
+}
+
+.contact-form textarea{
+min-height:120px;
+resize:vertical;
 }
 
 /* форма */
@@ -649,3 +673,26 @@ right:30px;
 .gallery-prev{
 left:30px;
 }
+
+// ======= Уведомление при отправки формы =======
+
+.success-message{
+position:fixed;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+background:#1e8e3e;
+color:white;
+padding:16px 28px;
+border-radius:8px;
+font-size:16px;
+opacity:0;
+pointer-events:none;
+transition:0.3s;
+z-index:999;
+}
+
+.success-message.show{
+opacity:1;
+}
+
