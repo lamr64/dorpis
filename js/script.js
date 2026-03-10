@@ -105,8 +105,12 @@ this.value = result;
 // ===== TELEGRAM ФОРМА =====
 
 const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
-const chatId = "381660343";
-const chatId = "842558463";
+const chatIds = [
+  "381660343",
+  "842558463"
+  ];
+
+chatIds.forEach(id => {
 
 const form = document.querySelector("#contactForm");
 
@@ -142,7 +146,7 @@ headers: {
 "Content-Type": "application/json"
 },
 body: JSON.stringify({
-chat_id: chatId,
+chat_id: id,
 text: text
 })
 });
