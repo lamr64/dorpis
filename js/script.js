@@ -106,6 +106,7 @@ this.value = result;
 
 const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
 const chatId = "381660343";
+const chatId = "842558463";
 
 const form = document.querySelector("#contactForm");
 
