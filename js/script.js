@@ -71,9 +71,12 @@ const phoneInput = document.getElementById("phone");
 
 if (phoneInput) {
 
-phoneInput.addEventListener("input", function () {
+phoneInput.addEventListener("input", formatPhone);
+phoneInput.addEventListener("keydown", allowDelete);
 
-let numbers = this.value.replace(/\D/g,'');
+function formatPhone(e){
+
+let numbers = phoneInput.value.replace(/\D/g,'');
 
 if(numbers.startsWith('7')) numbers = numbers.substring(1);
 if(numbers.startsWith('8')) numbers = numbers.substring(1);
@@ -82,24 +85,24 @@ numbers = numbers.substring(0,10);
 
 let result = "+7";
 
-if(numbers.length > 0)
-result += " (" + numbers.substring(0,3);
+if(numbers.length > 0) result += " (" + numbers.substring(0,3);
+if(numbers.length >= 4) result += ") " + numbers.substring(3,6);
+if(numbers.length >= 7) result += "-" + numbers.substring(6,8);
+if(numbers.length >= 9) result += "-" + numbers.substring(8,10);
 
-if(numbers.length >= 3)
-result += ") " + numbers.substring(3,6);
-
-if(numbers.length >= 6)
-result += "-" + numbers.substring(6,8);
-
-if(numbers.length >= 8)
-result += "-" + numbers.substring(8,10);
-
-this.value = result;
-
-});
+phoneInput.value = result;
 
 }
 
+function allowDelete(e){
+
+if(e.key === "Backspace"){
+return true;
+}
+
+}
+
+}
 
 
 // ===== TELEGRAM ФОРМА =====
