@@ -141,7 +141,7 @@ try {
 
 for (const id of chatIds) {
 
-await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
 method: "POST",
 headers: {
 "Content-Type": "application/json"
