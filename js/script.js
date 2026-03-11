@@ -282,6 +282,32 @@ viewer.appendChild(prev);
 
 document.body.appendChild(viewer);
 
+// ===== СВАЙП В FULLSCREEN =====
+
+let startXfs = 0;
+
+viewer.addEventListener("touchstart", e => {
+startXfs = e.touches[0].clientX;
+});
+
+viewer.addEventListener("touchend", e => {
+
+let endXfs = e.changedTouches[0].clientX;
+
+if(startXfs - endXfs > 50){
+current++;
+if(current >= images.length) current = 0;
+show();
+}
+
+if(endXfs - startXfs > 50){
+current--;
+if(current < 0) current = images.length - 1;
+show();
+}
+
+});
+
 function show(){
 bigImg.src = images[current].src;
 }
