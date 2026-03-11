@@ -105,7 +105,7 @@ this.value = result;
 // ===== TELEGRAM ФОРМА =====
 
 const botToken = "8543757769:AAGZhW-1zXsmyVXw0lW9tW2BT4hPs_EK6Xc";
-const chatId = "381660343";
+const chatIds = ["381660343", "842558463"];
 
 
 const form = document.querySelector("#contactForm");
@@ -136,16 +136,20 @@ const text =
   
 try {
 
-const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+for (const id of chatIds) {
+
+await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
 method: "POST",
 headers: {
 "Content-Type": "application/json"
 },
 body: JSON.stringify({
-chat_id: chatId,
+chat_id: id,
 text: text
 })
 });
+
+}
 
 if(!response.ok){
 throw new Error("Request failed");
