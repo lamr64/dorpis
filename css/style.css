@@ -638,6 +638,7 @@ z-index:9999;
 }
 
 .gallery-view img{
+touch-action: pan-y;
 max-width:90%;
 max-height:90%;
 border-radius:10px;
