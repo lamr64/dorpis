@@ -152,13 +152,13 @@ text: text
 })
 });
 
-}
-
 if(!response.ok){
-throw new Error("Request failed");
+throw new Error("Telegram error");
 }
 
-const toast = document.getElementById("successMessage");
+}
+
+const toast = document.getElementById("success-toast");
 
 if(toast){
 toast.classList.add("show");
